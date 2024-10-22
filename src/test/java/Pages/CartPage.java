@@ -13,6 +13,9 @@ public class CartPage extends BaseTest {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css = "span[class='title'][data-test='title']")
+    public WebElement pageTitle;
+
     @FindBy(className = "cart_item")
     public List<WebElement> cartItems;
 
@@ -28,7 +31,7 @@ public class CartPage extends BaseTest {
     //----------------------
 
     public void emptyCart() {
-        if (cartItems.size() > 0) {
+        if (!cartItems.isEmpty()) {
             for (int i = removeButtons.size() - 1; i >= 0; i--) {
                 removeButtons.get(i).click();
             }

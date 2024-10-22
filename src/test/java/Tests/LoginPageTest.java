@@ -19,11 +19,11 @@ public class LoginPageTest extends BaseTest {
         String password = excelReader.getStringData("Sheet1", 1, 1);
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
 
         Assert.assertTrue(inventoryPage.appLogo.isDisplayed());
         Assert.assertEquals(inventoryPage.appLogo.getText(), "Swag Labs");
-        Assert.assertTrue(inventoryPage.dataTestTitle.getText()
+        Assert.assertTrue(inventoryPage.pageTitle.getText()
                 .equalsIgnoreCase("Products"));
         Assert.assertTrue(inventoryPage.shoppingCartLink.isDisplayed());
         Assert.assertTrue(inventoryPage.burgerMenuButton.isDisplayed());
@@ -35,7 +35,7 @@ public class LoginPageTest extends BaseTest {
         String password = excelReader.getStringData("Sheet1", 1, 1);
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
 
         Assert.assertTrue(homepagePage.errorMessage.getText()
                 .equalsIgnoreCase("Epic sadface: Username and password do not match any user in this service"));
@@ -47,7 +47,7 @@ public class LoginPageTest extends BaseTest {
         String password = excelReader.getStringData("Sheet1", 1, 3);
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
 
         Assert.assertTrue(homepagePage.errorMessage.getText()
                 .equalsIgnoreCase("Epic sadface: Username and password do not match any user in this service"));
@@ -59,7 +59,7 @@ public class LoginPageTest extends BaseTest {
         String password = "";
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
 
         Assert.assertTrue(homepagePage.errorMessage.getText()
                 .equalsIgnoreCase("Epic sadface: Username is required"));
@@ -71,7 +71,7 @@ public class LoginPageTest extends BaseTest {
         String password = excelReader.getStringData("Sheet1", 1, 1);
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
         inventoryPage.burgerMenuButton.click();
         wait.until(ExpectedConditions.visibilityOf(inventoryPage.logoutButton));
         inventoryPage.logoutButton.click();

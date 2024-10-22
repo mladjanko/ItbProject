@@ -1,8 +1,6 @@
 package Base;
 
-import Pages.CartPage;
-import Pages.HomepagePage;
-import Pages.InventoryPage;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +18,9 @@ public class BaseTest {
     public HomepagePage homepagePage;
     public InventoryPage inventoryPage;
     public CartPage cartPage;
+    public CheckoutStepOnePage checkoutStepOnePage;
+    public CheckoutStepTwoPage checkoutStepTwoPage;
+    public CheckoutCompletePage checkoutCompletePage;
     public ExcelReader excelReader;
     public WebDriverWait wait;
 
@@ -36,6 +37,9 @@ public class BaseTest {
         homepagePage = new HomepagePage();
         inventoryPage = new InventoryPage();
         cartPage = new CartPage();
+        checkoutStepOnePage = new CheckoutStepOnePage();
+        checkoutStepTwoPage = new CheckoutStepTwoPage();
+        checkoutCompletePage = new CheckoutCompletePage();
     }
 
     public void scrollToElement(WebElement element) {
@@ -47,7 +51,7 @@ public class BaseTest {
         String password = excelReader.getStringData("Sheet1", 1, 1);
         homepagePage.inputUserName(userName);
         homepagePage.inputPassword(password);
-        homepagePage.clickOnLoginButton();
+        homepagePage.loginButton.click();
     }
 
     @AfterClass

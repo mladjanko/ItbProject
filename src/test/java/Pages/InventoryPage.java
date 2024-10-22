@@ -26,9 +26,21 @@ public class InventoryPage extends BaseTest {
     public WebElement logoutButton;
 
     @FindBy(css = "span[class='title'][data-test='title']")
-    public WebElement dataTestTitle;
+    public WebElement pageTitle;
+
+    @FindBy(className = "inventory_item")
+    public List<WebElement> inventoryItems;
 
     @FindBy(className = "btn_inventory")
     public List<WebElement> addToCartButtons;
 
+    //--------------------
+
+    public void addProductsToCart(int productsNumber) {
+        if (productsNumber <= addToCartButtons.size()) {
+            for (int i = 0; i < productsNumber; i++) {
+                addToCartButtons.get(i).click();
+            }
+        }
+    }
 }

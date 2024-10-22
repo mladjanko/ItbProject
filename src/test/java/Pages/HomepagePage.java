@@ -37,8 +37,4 @@ public class HomepagePage extends BaseTest {
         inputPasswordField.clear();
         inputPasswordField.sendKeys(password);
     }
-
-    public void clickOnLoginButton() {
-        loginButton.click();
-    }
 }

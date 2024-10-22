@@ -1,5 +1,6 @@
 package Base;
 
+import Pages.CartPage;
 import Pages.HomepagePage;
 import Pages.InventoryPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -18,6 +19,7 @@ public class BaseTest {
     public static WebDriver driver;
     public HomepagePage homepagePage;
     public InventoryPage inventoryPage;
+    public CartPage cartPage;
     public ExcelReader excelReader;
     public WebDriverWait wait;
 
@@ -29,14 +31,23 @@ public class BaseTest {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
-        excelReader = new ExcelReader("C:\\Users\\mladj\\Desktop\\SaucedemoTestData.xlsx");
+        excelReader = new ExcelReader("./SaucedemoTestData.xlsx");
 
         homepagePage = new HomepagePage();
         inventoryPage = new InventoryPage();
+        cartPage = new CartPage();
     }
 
     public void scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void logIn() {
+        String userName = excelReader.getStringData("Sheet1", 1, 0);
+        String password = excelReader.getStringData("Sheet1", 1, 1);
+        homepagePage.inputUserName(userName);
+        homepagePage.inputPassword(password);
+        homepagePage.clickOnLoginButton();
     }
 
     @AfterClass

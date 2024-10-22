@@ -22,6 +22,7 @@ public class LoginPageTest extends BaseTest {
         homepagePage.clickOnLoginButton();
 
         Assert.assertTrue(inventoryPage.appLogo.isDisplayed());
+        Assert.assertEquals(inventoryPage.appLogo.getText(), "Swag Labs");
         Assert.assertTrue(inventoryPage.dataTestTitle.getText()
                 .equalsIgnoreCase("Products"));
         Assert.assertTrue(inventoryPage.shoppingCartLink.isDisplayed());

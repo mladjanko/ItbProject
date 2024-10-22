@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class InventoryPage extends BaseTest {
 
     public InventoryPage() {
@@ -25,5 +27,8 @@ public class InventoryPage extends BaseTest {
 
     @FindBy(css = "span[class='title'][data-test='title']")
     public WebElement dataTestTitle;
+
+    @FindBy(className = "btn_inventory")
+    public List<WebElement> addToCartButtons;
 
 }
